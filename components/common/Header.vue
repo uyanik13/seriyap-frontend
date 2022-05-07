@@ -34,7 +34,7 @@
          <!-- LOGIN BUTTONS -->
         <div class="flex space-x-2 lg-mx-0 mx-2">
           <button
-
+            @click="modalAction()"
             class="
              btn-secondary
             "
@@ -138,12 +138,14 @@
         />
       </div>
     </div>
+
+      <!-- LOGIN MODAL -->
+      <common-modal-login :modal="modal"/>
   </div>
 </template>
 
 <script setup lang="ts">
-const { width, type } = useBreakPoints();
-
+const { modal, modalAction } = useModal();
 
 const search = ref([]);
 const services = ref([
