@@ -91,11 +91,11 @@
                 placeholder="hangi hizmeti ariyorsun"
               />
             </div>
-            <div>
+            <div class="flex">
               <button
                 type="submit"
                 class="
-                  bg-[#FF6000]
+                  bg-theme1
                   flex
                   items-center
                   justify-center

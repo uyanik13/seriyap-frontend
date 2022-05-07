@@ -4,7 +4,7 @@
     class="
       w-full
       flex flex-col items-center 
-      h-106
+      h-64
       bg-center bg-no-repeat bg-cover
       relative
       font-sans
@@ -63,72 +63,14 @@
       "
     >
       <div class="mx-2 lg:mx-4 text-center text-white">
-        <h1 class="font-bold text-10 lg:text-12 mb-2 lg:mb-4 leading-tight">Aradığın Hizmeti Seri Bul</h1>
+        <h1 class="font-bold text-10 lg:text-12 mb-2 lg:mb-4 leading-tight">Tadilat</h1>
         <h2 class="font-bold text-xl mb-8">
           İhtiyacın olan hizmete kolayca ulaş, bekleyen işlerini hallet
         </h2>
-        <div>
-          <div
-            class="flex items-center max-w-md mx-auto bg-white rounded-lg"
-          >
-            <div class="w-full">
-              <input
-                type="search"
-                class="
-                  w-full
-                  px-4
-                  py-1
-                  text-gray-800
-                  rounded-lg
-                  focus:outline-none
-                "
-                v-model="search"
-                placeholder="hangi hizmeti ariyorsun"
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                class="
-                  bg-[#FF6000]
-                  flex
-                  items-center
-                  justify-center
-                  w-16
-                  h-12
-                  text-white
-                  rounded-r-lg
-                "
-                :class="search.length > 0 ? 'bg-purple-500' : 'bg-gray-500 '"
-              >
-                Ara
-                <svg
-                  class="w-4 h-4 ml-1 mt-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 
-      <!-- SERVICES -->
-    <div class="flex flex-col  bg-opacity-25 bg-black absolute bottom-0">
-      <div class="mb-3 lg:-mb-12 ">
-        <!-- <CommonStuffFilter/> -->
-      </div>
-    </div>
   </div>
 </template>
 

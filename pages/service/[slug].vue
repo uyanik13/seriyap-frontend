@@ -118,18 +118,18 @@ const cityFilterOptions = [
 </script>
 
 <template>
-  <div class="lg:container flex flex-col justify-center mx-auto">
+  <div class="xl:container lg:container flex flex-col justify-center mx-auto">
     <div class="mb-8 flex justify-between">
       <div id="bread-crumb" class="w-1/5">
-        <NuxtLink to="/"
-          >Anasayfa <span>></span>
-          <NuxtLink to="/service/tadilat" class="font-semibold"
-            >Tadilat</NuxtLink
-          ></NuxtLink
+        <div 
+          > <nuxt-link to="/">Anasayfa</nuxt-link>  <span>> </span>
+          <span  class="font-semibold "
+            > Tadilat</span
+          ></div
         >
       </div>
       <div class="flex justify-between w-4/5">
-        <div id="search" class="flex w-3/5 mx-4" >
+        <div id="search" class="flex w-4/5 mx-4" >
          <input
                 type="search"
                 class="
@@ -140,6 +140,8 @@ const cityFilterOptions = [
                   text-gray-800
                   rounded-lg
                   focus:outline-none
+                  focus:border-theme1
+                  border-1 border-gray-400
                 "
                 v-model="search"
                 placeholder="Hizmet veren ara"
@@ -151,7 +153,7 @@ const cityFilterOptions = [
           <v-select
             v-model="cityFilter"
             :options="cityFilterOptions"
-            class="w-40 text-sm"
+            class="w-40 text-sm rounded-lg"
             placeholder="Select a city"
             :reduce="(item) => item"
             label="name"
@@ -161,7 +163,7 @@ const cityFilterOptions = [
           <v-select
             v-model="districtFilter"
             :options="cityFilter && cityFilter.id ?  cityFilter.districts : []"
-            class="w-40 text-sm"
+            class="w-40 text-sm rounded-lg"
             placeholder="Select a district"
             :reduce="(item) => item"
             label="name"
@@ -210,7 +212,7 @@ const cityFilterOptions = [
               <h2 class="text-xl font-medium text-gray-700">
                 {{ item.name.slice(0, 17) }}
               </h2>
-              <span class="text-blue-500 block mb-5">{{
+              <span class="text-gray-500 block mb-5">{{
                 item.description.slice(0, 100)
               }}</span>
               <div class="flex justify-center items-center text-sm space-x-2">

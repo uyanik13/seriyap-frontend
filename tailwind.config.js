@@ -1,10 +1,9 @@
 module.exports = {
-  purge: [
+  content: [
     "./components/**/*.{vue,js}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
   ],
   future: {
     defaultLineHeights: true,
@@ -31,7 +30,7 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      theme1: '#1868B6',
+      theme1: '#FF6000',
       black: '#000',
       white: '#ffffff',
       primary: '#FF6000',
@@ -219,7 +218,7 @@ module.exports = {
     },
     borderColor: (theme) => ({
       ...theme('colors'),
-      default: theme('colors.gray.300', 'currentColor')
+      default: theme('colors.orange.200', 'currentColor')
     }),
     fill: (theme) => ({
       red: theme('colors.red.500'),

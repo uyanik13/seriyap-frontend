@@ -9,31 +9,31 @@
   
 <footer class="bg-white dark:bg-gray-800 pt-4 pb-8 xl:pt-8">
     <div class="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 text-gray-400 dark:text-gray-300">
-        <ul class="text-lg font-light pb-8 flex flex-wrap justify-center">
+        <ul class="text-sm text-gray-500  pb-8 flex flex-wrap justify-center">
             <li class="w-1/2 md:w-1/3 lg:w-1/3">
                 <div class="text-center">
                     <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                        Components
+                        BİLGİ
                     </h2>
                     <ul>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Elements
+                                Nasil Kullanilir?
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Forms
+                                Hakkimizda
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Commerces
+                                Blog
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Navigation
+                                Yardim
                             </a>
                         </li>
                     </ul>
@@ -42,27 +42,27 @@
             <li class="w-1/2 md:w-1/3 lg:w-1/3">
                 <div class="text-center">
                     <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                        Contacts
+                        HİZMETLER
                     </h2>
                     <ul>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Github
+                                Ev Temizligi
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Facebook
+                                Evden Eve Nakliyat
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Twitter
+                                Boya Badana
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                LinkedIn
+                                Usta Ariyorum
                             </a>
                         </li>
                     </ul>
@@ -71,27 +71,27 @@
             <li class="w-1/2 md:w-1/3 lg:w-1/3">
                 <div class="text-center">
                     <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                        Customization
+                        Bize Ulasin
                     </h2>
                     <ul>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Settings
+                                destek@seriyap.com
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Themes
+                                Test
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                Plugins
+                                Test
                             </a>
                         </li>
                         <li class="mb-4 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                             <a href="#">
-                                LinkedIn
+                                Test
                             </a>
                         </li>
                     </ul>
@@ -131,7 +131,7 @@
             </a>
         </div>
         <div class="text-center pt-10 sm:pt-12 font-light flex items-center justify-center">
-            Created by Charlie
+            Seriyapi © 2022 Tüm Hakları Saklıdır
         </div>
     </div>
 </footer>
