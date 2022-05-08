@@ -124,6 +124,7 @@ const cityFilterOptions = [
         <div>
           <nuxt-link to="/">Anasayfa</nuxt-link> <span>> </span>
           <span class="font-semibold"> Tadilat</span>
+          {{$route.params.slug}}
         </div>
       </div>
       <div class="flex w-4/5 justify-between">

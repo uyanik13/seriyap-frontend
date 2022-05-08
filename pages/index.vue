@@ -74,6 +74,9 @@ const trendingCollections = [
     serviceCount: 10,
   },
 ];
+
+//const { error, data } = useFetch("http://127.0.0.1:8000/api/service");
+
 </script>
 
 <template>

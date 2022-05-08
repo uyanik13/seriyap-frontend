@@ -6,6 +6,8 @@ components:
     change_theme: change theme
   header:
     search_place_holder: Search a service
+  footer:
+    hakkimizda: Hakkimizda  
 pages:
   index:
     title: nuxt 3,awesome,starter

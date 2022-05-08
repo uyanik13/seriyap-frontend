@@ -26,6 +26,7 @@
         />
 
         <Button
+          :to="`/hizmet-ver`"
           :text="`Hizmet Ver`"
           size="md"
           :type="`secondary`"

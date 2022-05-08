@@ -1,6 +1,15 @@
 <template>
-  <a
+  <NuxtLink
+    v-if="to"
+    tag="a"
+    :to="to"
     :class="`${defaultStyle} ${selectedStyle} ${selectedSize}`"
+  >
+    <slot>{{ text }}</slot>
+  </NuxtLink>
+  <a
+    v-else
+    :class="`${defaultStyle} ${selectedStyle} ${selectedSize}}`"
     @click="onClick"
   >
     <slot>{{ text }}</slot>
@@ -44,7 +53,7 @@ const defaultStyle = `
 `;
 const styles = reactive({
   primary:
-    "text-gray-800 bg-white hover:bg-gray-800 hover:text-white hover:border-gray-900 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-100 dark:border-white",
+    "rounded-lg text-gray-800 bg-white hover:bg-gray-800 hover:text-white hover:border-gray-900 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-100 dark:border-white",
   secondary:
     "rounded-lg bg-primary  text-center text-sm font-bold text-white transition duration-500 ease-in-out hover:bg-gray-800 hover:border-gray-900 focus:outline-none dark:hover:bg-gray-800 dark:hover:text-gray-100 dark:border-white",
 });

@@ -11,7 +11,7 @@
             <p
               class="text-6 lg:text-7 ml-2 flex font-sans font-bold leading-relaxed tracking-normal"
             >
-              seri<span class="text-primary">yap</span>
+              logo<span class="text-primary">yap</span>
             </p>
           </div>
         </a>
