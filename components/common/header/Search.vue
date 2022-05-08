@@ -1,3 +1,58 @@
+<script setup>
+const search = ref("");
+const results = ref("");
+const query = ref("");
+const searchResultsVisible = ref(false);
+const searchResults = ref([]);
+const highlightedIndex = ref(0);
+
+const reset = () => {
+  query.value = "";
+  highlightedIndex.value = 0;
+};
+const softReset = () => {
+  searchResults.valueVisible = true;
+  highlightedIndex.value = 0;
+};
+const focusSearch = (e) => {
+  if (e.key === "/") {
+    search.valuee.focus();
+  }
+};
+const performSearch = () => {
+  if (query.value.length < 2) return false;
+  // axios
+  //   .get(`/api/search-name/${query.value.toLowerCase()}`)
+  //   .then((response) => {
+  //     searchResults.value = response.data.filter((item) =>
+  //       item.name.toLowerCase().includes(query.value.toLowerCase())
+  //     );
+  //   });
+};
+const highlightPrevious = () => {
+  if (highlightedIndex.value > 0) {
+    highlightedIndex.value = highlightedIndex.value - 1;
+    this.scrollIntoView();
+  }
+};
+const highlightNext = () => {
+  if (highlightedIndex.value < searchResults.value.length - 1) {
+    highlightedIndex.value = highlightedIndex.value + 1;
+    this.scrollIntoView();
+  }
+};
+const scrollIntoView = () => {
+  results.value.children[highlightedIndex.value].scrollIntoView({
+    block: "nearest",
+  });
+};
+const gotoLink = () => {
+  if (searchResults.value[highlightedIndex.value]) {
+    window.location = searchResults.value[highlightedIndex.value].item.slug;
+  }
+};
+</script>
+
 <template>
   <div class="relative">
     <div class="relative w-full">
@@ -5,20 +60,8 @@
         ref="search"
         v-model="query"
         type="text"
-        :placeholder="$t('Search a name')"
-        class="
-          z-30
-          w-full
-          lg:px-10
-          py-3
-          lg:py-4
-          pl-10
-          text-sm
-          border-gray-400
-          rounded-lg
-          border-1
-          focus:outline-none focus:ring-1 focus:indigo-500
-        "
+        :placeholder="$t('components.header.search_place_holder')"
+        class="focus:indigo-500 z-30 w-full rounded-lg border-1 border-gray-400 py-3 pl-10 text-sm focus:outline-none focus:ring-1 lg:px-10 lg:py-4"
         @blur="searchResultsVisible = false"
         @focus="searchResultsVisible = true"
         @keydown.esc="searchResultsVisible = false"
@@ -32,7 +75,7 @@
       <div class="absolute top-0 ml-3">
         <svg
           fill="currentColor"
-          class="w-5 h-5 text-gray-500 mt-4"
+          class="mt-4 h-5 w-5 text-gray-500"
           viewBox="0 0 24 24"
           width="24"
           height="24"
@@ -46,16 +89,7 @@
 
       <div
         v-if="query.length > 0"
-        class="
-          absolute
-          top-0
-          right-0
-          mr-5
-          text-gray-600
-          cursor-pointer
-          text-5
-          hover:text-gray-800
-        "
+        class="absolute top-0 right-0 mr-5 cursor-pointer text-5 text-gray-600 hover:text-gray-800"
         style="top: 2px"
         @click="reset"
       >
@@ -66,22 +100,7 @@
     <transition name="fade">
       <div
         v-if="query.length > 0 && searchResultsVisible"
-        class="
-          absolute
-          left-0
-          right-0
-          z-10
-          mt-2
-          mb-4
-          overflow-hidden overflow-y-auto
-          text-left
-          normal-case
-          bg-white
-          border
-          rounded-lg
-          shadow
-          w-108
-        "
+        class="border shadow absolute left-0 right-0 z-10 mt-2 mb-4 w-108 overflow-hidden overflow-y-auto rounded-lg bg-white text-left normal-case"
         style="max-height: 32rem"
       >
         <div ref="results" class="flex flex-col">
@@ -89,13 +108,7 @@
             v-for="(item, index) in searchResults"
             :key="index"
             :to="localePath({ name: 'name-slug', params: { slug: item.slug } })"
-            class="
-              p-4
-              text-xl
-              border-b border-gray-400
-              cursor-pointer
-              hover:bg-blue-100
-            "
+            class="border-b hover:bg-blue-00 cursor-pointer border-gray-400 p-4 text-xl"
             :class="{ 'bg-blue-100': index === highlightedIndex }"
             @mousedown.prevent="searchResultsVisible = true"
           >
@@ -103,19 +116,19 @@
             <div class="flex">
               <img
                 v-if="item.image"
-                class="w-16 lg:w-16 h-16 mx-1 rounded-full"
+                class="mx-1 h-16 w-16 rounded-full lg:w-16"
                 :src="item.image"
               />
               <img
                 v-else
-                class="w-24 h-16 mx-1 rounded-full"
+                class="mx-1 h-16 w-24 rounded-full"
                 :src="`~/assets/images/baby-images/boy/e-11.jpg`"
               />
               <div class="grid">
                 <span class="mx-1 my-1 text-sm font-normal">{{
                   item.name
                 }}</span>
-                <span class="flex mx-2">
+                <span class="mx-2 flex">
                   <p class="mx-1 text-sm text-gray-800">
                     {{ item.mean[$i18n.locale] }}
                   </p>
@@ -126,7 +139,7 @@
 
           <div
             v-if="searchResults.length === 0"
-            class="w-full p-4 font-normal border-b shadow-lg cursor-pointer"
+            class="border-b w-full cursor-pointer p-4 font-normal shadow-lg"
           >
             <p class="my-0">
               {{ $t("No results for ") }}'<strong>{{ query }}</strong
@@ -138,79 +151,6 @@
     </transition>
   </div>
 </template>
-
-<script>
-export default {
-  components: {},
-  data() {
-    return {
-      query: "",
-      searchResultsVisible: false,
-      searchResults: [],
-      highlightedIndex: 0,
-    };
-  },
-  computed: {
-    // onSearchFocus: function () {
-    //   return this.$store.state.setting.onSearchFocus;
-    // },
-  },
-  watch: {
-    // whenever question changes, this function will run
-    // onSearchFocus: function (newVal) {
-    //   this.$refs.search.focus();
-    // },
-  },
-  created() {},
-  methods: {
-    reset() {
-      this.query = "";
-      this.highlightedIndex = 0;
-    },
-    softReset() {
-      this.searchResultsVisible = true;
-      this.highlightedIndex = 0;
-    },
-    focusSearch(e) {
-      if (e.key === "/") {
-        this.$refs.search.focus();
-      }
-    },
-    performSearch() {
-      if (this.query.length < 2) return false;
-      this.$axios
-        .get(`/api/search-name/${this.query.toLowerCase()}`)
-        .then((response) => {
-          this.searchResults = response.data.filter((item) =>
-            item.name.toLowerCase().includes(this.query.toLowerCase())
-          );
-        });
-    },
-    highlightPrevious() {
-      if (this.highlightedIndex > 0) {
-        this.highlightedIndex = this.highlightedIndex - 1;
-        this.scrollIntoView();
-      }
-    },
-    highlightNext() {
-      if (this.highlightedIndex < this.searchResults.length - 1) {
-        this.highlightedIndex = this.highlightedIndex + 1;
-        this.scrollIntoView();
-      }
-    },
-    scrollIntoView() {
-      this.$refs.results.children[this.highlightedIndex].scrollIntoView({
-        block: "nearest",
-      });
-    },
-    gotoLink() {
-      if (this.searchResults[this.highlightedIndex]) {
-        window.location = this.searchResults[this.highlightedIndex].item.slug;
-      }
-    },
-  },
-};
-</script>
 
 <style scoped>
 .fade-enter-active,

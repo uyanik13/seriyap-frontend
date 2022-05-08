@@ -1,9 +1,7 @@
-
 export default function () {
+  const modal = useState("modal", () => false);
 
-  const modal = useState('modal', () => false)
-  
-  const modalAction = () => modal.value = !modal.value
+  const modalAction = () => (modal.value = !modal.value);
 
-  return { modal, modalAction }
+  return { modal, modalAction };
 }

@@ -1,31 +1,52 @@
 import { defineNuxtConfig } from "nuxt";
+import { IntlifyModuleOptions } from "@intlify/nuxt3";
+import UnpluginComponentsVite from "unplugin-vue-components/vite";
+import IconsResolver from "unplugin-icons/resolver";
+
+declare module "@nuxt/schema" {
+  interface NuxtConfig {
+    intlify?: IntlifyModuleOptions;
+  }
+}
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
+    transpile: ["@headlessui/vue"],
+  },
+
+  css: [
+    // "~/assets/scss/tailwind.scss",
+    "~/assets/sass/app.scss",
+    "~/assets/css/app.css",
+  ],
+
+  modules: [["@nuxtjs/svg"]],
+
+  intlify: {
+    localeDir: "locales", // set the `locales` directory at source directory of your Nuxt application
+    vueI18n: {
+      locale: "en",
+      fallbackLocale: "en",
+      availableLocales: ["en", "tr", "de"],
     },
   },
-  tailwindcss: {
-    cssPath: '~/assets/css/index.css',
-    configPath: 'tailwind.config.js',
-    exposeConfig: false,
-    config: {},
-    injectPosition: 0,
-    viewer: false,
-  },
-  buildModules: ["@pinia/nuxt", '@intlify/nuxt3', '@nuxtjs/tailwindcss'],
+
+  buildModules: [
+    "nuxt-windicss",
+    "@nuxtjs/eslint-module",
+    "unplugin-icons/nuxt",
+    "@pinia/nuxt",
+    "@nuxtjs/svg",
+    "@intlify/nuxt3",
+  ],
+
   runtimeConfig: {
-		public: {
-      url: 'http://localhost:3000',
-		},
-	},
+    public: {
+      url: "http://localhost:3000",
+    },
+  },
+
   app: {
     head: {
       meta: [
@@ -51,10 +72,54 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   meta: {
-    title: 'Seri Yap',
+    title: "Seri Yap",
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: "Nuxt 3 Awesome Starter",
+      },
+    ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
   },
-  target: 'static',
-  ssr: false,
-  rootDir: '',
+
+  components: true,
+
+  // vite plugins
+  vite: {
+    plugins: [
+      UnpluginComponentsVite({
+        dts: true,
+        resolvers: [
+          IconsResolver({
+            prefix: "Icon",
+          }),
+        ],
+      }),
+    ],
+  },
+
+  vueuse: {
+    ssrHandlers: true,
+  },
+
+  
+  windicss: {
+    analyze: {
+      analysis: {
+        interpretUtilities: false,
+      },
+      server: {
+        port: 3000,
+        open: false,
+      },
+    },
+    scan: {
+      dirs: ["./"],
+      exclude: ["node_modules", "dist"],
+    },
+  },
 });

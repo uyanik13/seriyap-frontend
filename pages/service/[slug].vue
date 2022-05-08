@@ -92,7 +92,7 @@ const serviceProviders = [
     commentCount: 10,
   },
 ];
-const search = ref('');
+const search = ref("");
 const cityFilter = ref(null);
 const districtFilter = ref(null);
 const cityFilterOptions = [
@@ -118,106 +118,73 @@ const cityFilterOptions = [
 </script>
 
 <template>
-  <div class="xl:container lg:container flex flex-col justify-center mx-auto">
+  <div class="mx-auto flex flex-col justify-center lg:container xl:container">
     <div class="mb-8 flex justify-between">
       <div id="bread-crumb" class="w-1/5">
-        <div 
-          > <nuxt-link to="/">Anasayfa</nuxt-link>  <span>> </span>
-          <span  class="font-semibold "
-            > Tadilat</span
-          ></div
-        >
-      </div>
-      <div class="flex justify-between w-4/5">
-        <div id="search" class="flex w-4/5 mx-4" >
-         <input
-                type="search"
-                class="
-                 text-sm
-                  w-full
-                  px-4
-                  py-1
-                  text-gray-800
-                  rounded-lg
-                  focus:outline-none
-                  focus:border-theme1
-                  border-1 border-gray-400
-                "
-                v-model="search"
-                placeholder="Hizmet veren ara"
-              />
-              
-      </div>
-      <div id="location-filter" class="flex space-x-2">
-        <div class="bg-white">
-          <v-select
-            v-model="cityFilter"
-            :options="cityFilterOptions"
-            class="w-40 text-sm rounded-lg"
-            placeholder="Select a city"
-            :reduce="(item) => item"
-            label="name"
-          />
-        </div>
-       <div class="bg-white" v-if="cityFilter && cityFilter.id">
-          <v-select
-            v-model="districtFilter"
-            :options="cityFilter && cityFilter.id ?  cityFilter.districts : []"
-            class="w-40 text-sm rounded-lg"
-            placeholder="Select a district"
-            :reduce="(item) => item"
-            label="name"
-          />
+        <div>
+          <nuxt-link to="/">Anasayfa</nuxt-link> <span>> </span>
+          <span class="font-semibold"> Tadilat</span>
         </div>
       </div>
+      <div class="flex w-4/5 justify-between">
+        <div id="search" class="mx-4 flex w-4/5">
+          <input
+            v-model="search"
+            type="search"
+            class="focus:border-theme1 border-1 w-full rounded-lg border-gray-400 px-4 py-1 text-sm text-gray-800 focus:outline-none"
+            placeholder="Hizmet veren ara"
+          />
+        </div>
+        <div id="location-filter" class="flex space-x-2">
+          <div class="bg-white">
+            <v-select
+              v-model="cityFilter"
+              :options="cityFilterOptions"
+              class="z-0 w-40 rounded-lg text-sm"
+              placeholder="Select a city"
+              :reduce="(item) => item"
+              label="name"
+            />
+          </div>
+          <div v-if="cityFilter && cityFilter.id" class="bg-white">
+            <v-select
+              v-model="districtFilter"
+              :options="cityFilter && cityFilter.id ? cityFilter.districts : []"
+              class="z-0 w-40 rounded-lg text-sm"
+              placeholder="Select a district"
+              :reduce="(item) => item"
+              label="name"
+            />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flex mt-4">
-      <div id="filter-side" class="w-1/5 mr-4">
+    <div class="mt-4 flex">
+      <div id="filter-side" class="mr-4 w-1/5">
         <common-stuff-side-filter />
       </div>
       <div id="content" class="w-4/5">
         <div class="flex flex-col sm:flex-row">
           <div
-            class="
-              grid
-              lg:gap-4
-              gap-4
-              grid-cols-1
-              md:grid-cols-2
-              lg:grid-cols-3
-              xl:grid-cols-4
-              4xl:grid-cols-6
-              5xl:grid-cols-6
-              mb-3
-              lg:-mb-12
-            "
+            class="4xl:grid-cols-6 5xl:grid-cols-6 mb-3 grid grid-cols-1 gap-4 md:grid-cols-2 lg:-mb-12 lg:grid-cols-3 lg:gap-4 xl:grid-cols-4"
           >
             <div
-              class="
-                px-8
-                bg-white
-                py-4
-                rounded-lg
-                shadow-lg
-                text-center
-                relative
-              "
               v-for="item in serviceProviders"
               :key="item.slug"
+              class="rounded-lg bg-white px-8 py-4 text-center shadow-lg"
             >
-              <div class="flex items-center justify-center mb-3">
-                <img class="w-24 h-24 rounded-full" :src="item.image" alt="" />
+              <div class="mb-3 flex items-center justify-center">
+                <img class="h-24 w-24 rounded-full" :src="item.image" alt="" />
               </div>
               <h2 class="text-xl font-medium text-gray-700">
                 {{ item.name.slice(0, 17) }}
               </h2>
-              <span class="text-gray-500 block mb-5">{{
+              <span class="mb-5 block text-gray-500">{{
                 item.description.slice(0, 100)
               }}</span>
-              <div class="flex justify-center items-center text-sm space-x-2">
+              <div class="flex items-center justify-center space-x-2 text-sm">
                 <CommonStuffStar :star="item.star" />
-                <nuxt-link to="/" class="text-blue-500 text-sm">
+                <nuxt-link to="/" class="text-sm text-blue-500">
                   {{ item.commentCount }}
                 </nuxt-link>
               </div>
@@ -237,5 +204,7 @@ definePageMeta({
 </script>
 
 <style lang="scss">
-  @import "assets/scss/components/_vueSelect.scss";
-</style> >
+@import "assets/scss/components/_vueSelect.scss";
+</style>
+
+
