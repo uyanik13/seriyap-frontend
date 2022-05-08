@@ -35,7 +35,7 @@ const selected = ref(plans[0]);
 </script>
 <template>
   <div class="flex flex-col items-center justify-center">
-        <div>
+    <div>
       <h1 class="mb-4 text-center font-black text-gray-700">STEPS</h1>
       <div class="flex">
         <div class="w-1/3 px-6 text-center">
@@ -220,7 +220,5 @@ const selected = ref(plans[0]);
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
